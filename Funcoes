@@ -1,0 +1,44 @@
+#Funções
+# Função sem argumento
+def saudacao():
+    print("Salve!")
+    print("Olá!")
+
+saudacao()
+# Função com argumento
+def boasvindas(nome, sobrenome):
+    print("Bem-vindo",nome,sobrenome)
+
+boasvindas("Pedro","Machado")
+boasvindas(sobrenome="Machado", nome= "Pedro")
+
+# Função com argumento padrão
+def msg(mensagem="Olá, tudo bem?"):
+    print(mensagem)
+
+msg("Bom dia!")
+msg()
+
+# Função com retorno
+def pi():
+    return 3.141592653589793
+p = pi()
+print(f"O valor de pi é:{p}")
+
+def soma(a=0,b=0):
+    return a+b
+
+print(soma(23,65))
+print(soma(23))
+print(soma())
+
+import random
+
+def jogar_dados(lados):
+    resultado = random.randint(1,lados)
+    return resultado
+
+entrada = int(input("Digite a quantidade de lados do dado:"))
+result = jogar_dados(entrada)
+print(f"O resultado foi: {result}")
+
