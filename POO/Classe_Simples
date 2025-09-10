@@ -16,3 +16,9 @@ item_2.showInfo()
 
 item_3 = Item("Machado", 100)
 item_3.showInfo()
+
+item_1.value = 220
+item_1.showInfo()
+
+item_1.type = "Arma"
+print(item_1.type)
