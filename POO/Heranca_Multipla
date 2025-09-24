@@ -1,0 +1,37 @@
+class Bateria:
+    def __init__(self, tensao, capacidade):
+        self.tensao = tensao
+        self.capacidade = capacidade
+
+    def status(self):
+        return f"Bateria - Tensão: {self.tensao}, Capacidade:{self.capacidade}"
+
+class Motor:
+    def __init__(self,potencia, voltagem):
+        self.potencia= potencia
+        self.voltagem= voltagem
+
+    def status(self):
+        return f"Motor - Potência: {self.potencia}, Tensão: {self.voltagem}"
+
+class Robot(Bateria,Motor):
+    def __init__(self,tensao,capacidade, potencia,voltagem):
+        #super.__init__(tensao,capacidade) #super busca a primeira herança
+        Bateria.__init__(self,tensao,capacidade)
+        Motor.__init__(self,potencia,voltagem)
+
+    def status(self):
+        print(Bateria.status(self))
+        print(Motor.status(self))
+        if self.tensao == self.voltagem:
+            print("Status: OK")
+        else:
+            print("Tensão Incompatível")
+
+bateria_1 = Bateria(12, 1000);
+#print(bateria_1.status())
+motor_1 = Motor(80, 12)
+#print(motor_1.status())
+robot_1 = Robot(bateria_1.tensao,bateria_1.capacidade,
+                motor_1.potencia,motor_1.voltagem)
+robot_1.status()
