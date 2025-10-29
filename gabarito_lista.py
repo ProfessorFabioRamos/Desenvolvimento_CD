@@ -34,44 +34,96 @@
 # print(f"Notas acima da media: {acima_media}")
 
 #Exercício 4
-import random
+# import random
+#
+# def jogar():
+#     opcoes = ["pedra","papel","tesoura"]
+#     vitorias = 0
+#     derrotas = 0
+#     empates = 0
+#
+#     print("-- PEDRA, PAPEL E TESOURA --")
+#
+#     while True:
+#         jogada = input(""" Escolha a sua jogada: pedra, papel ou tesoura.
+#     Digite sair para abandonar o jogo: """).lower()
+#         if jogada == "sair":
+#             break
+#         elif jogada not in opcoes:
+#             print("Opção inválida!")
+#             continue
+#
+#         ia = random.choice(opcoes)
+#         print(f"Você escolheu: {jogada}")
+#         print(f"A IA escolheu: {ia}")
+#
+#         if jogada == ia:
+#             print("Empate")
+#             empates +=1
+#         elif (jogada == "pedra" and ia == "tesoura" or \
+#                 jogada == "papel" and ia == "pedra" or \
+#                 jogada == "tesoura" and ia == "papel"):
+#             print("Você venceu =) !")
+#             vitorias+=1
+#         else:
+#             print("Você perdeu =( !")
+#             derrotas+=1
+#
+#     print("Resultado final:")
+#     print(f"Vitórias: {vitorias}")
+#     print(f"Derrotas: {derrotas}")
+#     print(f"Empates: {empates}")
+#
+# jogar()
 
-def jogar():
-    opcoes = ["pedra","papel","tesoura"]
-    vitorias = 0
-    derrotas = 0
-    empates = 0
+# Exercício 5
 
-    print("-- PEDRA, PAPEL E TESOURA --")
+biblioteca = []
 
-    while True:
-        jogada = input(""" Escolha a sua jogada: pedra, papel ou tesoura.
-    Digite sair para abandonar o jogo: """).lower()
-        if jogada == "sair":
-            break
-        elif jogada not in opcoes:
-            print("Opção inválida!")
-            continue
+def adicionar_livro(titulo, autor, ano):
+    livro = [titulo, autor, ano]
+    biblioteca.append(livro)
+    print(f"Livro {titulo} adicionado com sucesso!")
 
-        ia = random.choice(opcoes)
-        print(f"Você escolheu: {jogada}")
-        print(f"A IA escolheu: {ia}")
+def listar_livros():
+    if not biblioteca:
+        print("Nenhum livro cadastrado")
+    else:
+        print("Lista de de livros:")
+        for l in biblioteca:
+            print(f"Título: {l[0]} | Autor: {l[1]} | Ano: {l[2]}")
 
-        if jogada == ia:
-            print("Empate")
-            empates +=1
-        elif (jogada == "pedra" and ia == "tesoura" or \
-                jogada == "papel" and ia == "pedra" or \
-                jogada == "tesoura" and ia == "papel"):
-            print("Você venceu =) !")
-            vitorias+=1
-        else:
-            print("Você perdeu =( !")
-            derrotas+=1
+def buscar_livro(titulo_busca):
+    encontrados = [livro for livro in biblioteca if titulo_busca.lower() in \
+                   livro[0].lower()]
+    if encontrados:
+        print("Encontrados:")
+        for l in encontrados:
+            print(f"Título: {l[0]} | Autor: {l[1]} | Ano: {l[2]}")
+    else: 
+        print("Nenhum livro com este título foi encontrado")
+    
+while True:
+    print("--Biblioteca App--")
+    print("1 - Adicionar Livro")
+    print("2 - Listar Livros")
+    print("3 - Buscar Livro por titulo")
+    print("4 - Sair")
 
-    print("Resultado final:")
-    print(f"Vitórias: {vitorias}")
-    print(f"Derrotas: {derrotas}")
-    print(f"Empates: {empates}")
+    opcao = int(input("Escolha uma opção >"))
 
-jogar()
+    if opcao == 1:
+        titulo = input("Digite a titulo: ")
+        autor = input("Digite a autor: ")
+        ano = input("Digite a ano de publicação: ")
+        adicionar_livro(titulo, autor, ano)
+    elif opcao == 2:
+        listar_livros()
+    elif opcao == 3:
+        busca = input("Digite o titulo a buscar")
+        buscar_livro(busca)
+    elif opcao == 4:
+        print("Saindo do app...")
+        break
+    else:
+        print("Opção inválida")
