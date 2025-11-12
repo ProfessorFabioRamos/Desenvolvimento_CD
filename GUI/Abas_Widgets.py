@@ -1,6 +1,25 @@
 import tkinter as tk
 from tkinter import ttk
 
+lista_cadastro = [
+    "Nome: Bruno Costa, Idade: 54, Email: bruno.c@email.com",
+    "Nome: Carla Fernandes, Idade: 27, Email: carla.f@email.com",
+    "Nome: Francisco Mendes, Idade: 32, Email: francisco.m@email.com",
+    "Nome: Eliz Silva, Idade: 19, Email: eliz.s@email.com"
+]
+
+def exibir_cadastro():
+    # Modo normal para poder editar
+    caixa_texto.config(state="normal")
+    # Limpar caixa antes de inserir dados da linha 1 até o final
+    caixa_texto.delete("1.0", tk.END)
+    #Junta todos os  elementos da lista mas adiciona uma quebra de linha entre eles
+    texto_formatado = "\n".join(lista_cadastro)
+    #Insere texto formatado na caixa (END = começo)
+    caixa_texto.insert(tk.END, texto_formatado)
+    # Desliga a opção de edição
+    caixa_texto.config(state="disabled")
+
 def select_combo(event):
     valor = combo_opcoes.get()
     if valor != "Selecione uma opção":
@@ -42,8 +61,20 @@ btn_salvar.pack(pady=10)
 # Widgets da Aba 2
 label_aba_2 = ttk.Label(aba2,text = "Área de Consulta")
 label_aba_2.pack(padx=20, pady=20)
-btn_buscar = ttk.Button(aba2, text = "Buscar")
+btn_buscar = ttk.Button(aba2, text = "Buscar", command= exibir_cadastro)
 btn_buscar.pack(pady=10)
+# Caixa de texto que recebe o cadastro
+caixa_texto = tk.Text(
+    aba2,
+    height= 20,
+    width=60,
+    wrap="word",
+    font = ("Arial",10)
+)
+# Expandir para ocupar a aba
+caixa_texto.pack(pady= 20,fill="both", expand=True)
+# Inicia bloqueado para edição
+caixa_texto.config(state="disabled")
 
 # Aba 3 - Novos Widgets
 #Variável de controle do checkbox
