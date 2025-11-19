@@ -1,3 +1,4 @@
+# ESCRITA DO ARQUIVO
 linhas_para_escrever = [
     "Olá Mundo!\n",
     "Segunda linha.\n",
@@ -13,7 +14,8 @@ try:
     print("Arquivo: Meu_Arquivo.txt foi escrito com sucesso!")
 except Exception as e:
     print(f"Ocorreu um erro ao escrever o arquivo: {e}")
-
+#################################################################
+# LEITURA DO ARQUIVO
 try:
     with open("Meu_Arquivo.txt", "r", encoding= "utf-8") as f:
         print("--Lendo arquivo linha por linha--")
